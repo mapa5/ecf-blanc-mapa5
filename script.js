@@ -9,33 +9,67 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
 
         for (const elem in data.meals[0]) {
             console.log(`${elem}: ${data.meals[0][elem]}`);
+            const sectionplat = document.querySelector(".random");
+            let divplat = document.createElement("div");
+            divplat.className = 'plat'
+            sectionplat.appendChild(divplat);
+            const plat = document.querySelector(".plat");
 
             switch (elem) {
                 case "strMeal":
+                    let diving = document.createElement("span");
+                    diving.className = 'ingr'
+                    const divseling = document.querySelector("");
+                    divseling.appendChild(diving);
+
                 case "strArea":
+                    let = document.createElement("span");
+                    .textContent = data.meals[0][`strMeasure${i}`];
+                    const = document.querySelector(".ingr");
+                    .appendChild();
+
                 case "strInstructions":
+                    let = document.createElement("span");
+                    .textContent = data.meals[0][`strMeasure${i}`];
+                    const = document.querySelector(".ingr");
+                    .appendChild();
+
                 case "strMealThumb":
+                    let = document.createElement("span");
+                    .textContent = data.meals[0][`strMeasure${i}`];
+                    const = document.querySelector(".ingr");
+                    .appendChild();
+
                 case "strYoutube":
+                    let = document.createElement("span");
+                    .textContent = data.meals[0][`strMeasure${i}`];
+                    const = document.querySelector(".ingr");
+                    .appendChild();
             }
         }
         for (var i = 1; i <= 20; i++) {
 
-            
-            
-            let imgingredient = document.createElement("img");
-            imgingredient.src = `https://www.themealdb.com/images/ingredients/${data.meals[0][`strIngredient${i}`]}-Small.png`;
-            const imgingr = document.querySelector(".ingr");
-            imgingr.appendChild(imgingredient);
+            if (data.meals[0][`strIngredient${i}`] != "") {
+                let divingr = document.createElement("div");
+                divingr.className = 'ingr'
+                plat.appendChild(divingr);
 
-            let ingredient = document.createElement("span");
-            ingredient.textContent = data.meals[0][`strIngredient${i}`];
-            const ingr = document.querySelector(".ingr");
-            ingr.appendChild(ingredient);
+                const ingr = document.querySelector(".ingr");
 
-            let mesure = document.createElement("span");
-            mesure.textContent = data.meals[0][`strMeasure${i}`];
-            const mes = document.querySelector(".ingr");
-            mes.appendChild(mesure);
+                let imgingredient = document.createElement("img");
+                let ingredient = document.createElement("span");
+                let mesure = document.createElement("span");
+
+                imgingredient.src = `https://www.themealdb.com/images/ingredients/${data.meals[0][`strIngredient${i}`]}-Small.png`;
+                ingredient.textContent = data.meals[0][`strIngredient${i}`];
+                mesure.textContent = data.meals[0][`strMeasure${i}`];;
+
+                ingr.appendChild(imgingredient);
+                ingr.appendChild(ingredient);
+                ingr.appendChild(mesure);
+
+            } else
+                break
         }
     })
     .catch((err) => {
