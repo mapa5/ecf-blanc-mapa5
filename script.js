@@ -18,25 +18,31 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
                 case "strYoutube":
             }
         }
-        for (var i = 20; i >= 1; i--) {
-            console.log(
-                data.meals[0][`strMeasure${i}`]
-            );
+        for (var i = 1; i <= 20; i++) {
+
+            
+            
+            let imgingredient = document.createElement("img");
+            imgingredient.src = `https://www.themealdb.com/images/ingredients/${data.meals[0][`strIngredient${i}`]}-Small.png`;
+            const imgingr = document.querySelector(".ingr");
+            imgingr.appendChild(imgingredient);
+
+            let ingredient = document.createElement("span");
+            ingredient.textContent = data.meals[0][`strIngredient${i}`];
+            const ingr = document.querySelector(".ingr");
+            ingr.appendChild(ingredient);
+
+            let mesure = document.createElement("span");
+            mesure.textContent = data.meals[0][`strMeasure${i}`];
+            const mes = document.querySelector(".ingr");
+            mes.appendChild(mesure);
         }
-
-
-
-
     })
     .catch((err) => {
         console.error(err);
     });
 
 
-// const nouveauDivexe6 = document.createElement("p");
-// nouveauDivexe6.textContent = "Nouvel élément créé en JavaScript";
-// const conteneurexe6 = document.querySelector(".exe6");
-// conteneurexe6.appendChild(nouveauDivexe6);
 
 
 
