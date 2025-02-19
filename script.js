@@ -1,12 +1,12 @@
 fetch("https://www.themealdb.com/api/json/v1/1/random.php")
     .then((response) => response.json())
     .then((data) => {
-        const sectionplat = document.querySelector(".random");
+        let sectionplat = document.querySelector(".random");
         let divplat = document.createElement("div");
         divplat.className = 'plat container'
         sectionplat.appendChild(divplat);
-        const plat = document.querySelector(".plat");
-        for (const elem in data.meals[0]) {
+        let plat = document.querySelector(".plat");
+        for (let elem in data.meals[0]) {
             switch (elem) {
                 case "strMeal":
                     {
@@ -57,12 +57,12 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
                 let divingr = document.createElement("div");
                 divingr.className = `ingr${i} ingr`
                 plat.appendChild(divingr);
-                const ingr = document.querySelector(`.ingr${i}`);
+                let ingr = document.querySelector(`.ingr${i}`);
                 let imgingredient = document.createElement("img");
                 let ingredient = document.createElement("span");
                 let mesure = document.createElement("span");
                 imgingredient.src = `https://www.themealdb.com/images/ingredients/${data.meals[0][`strIngredient${i}`]}-Small.png`;
-                ingredient.textContent = data.meals[0][`strIngredient${i}`];
+                ingredient.textContent = data.meals[0][`strIngredient${i}`] + " ";
                 mesure.textContent = data.meals[0][`strMeasure${i}`];;
                 ingr.appendChild(imgingredient);
                 ingr.appendChild(ingredient);
@@ -71,7 +71,36 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
                 break
         }
     })
+    .catch((err) => {
+        console.error(err);
+    });
 
+
+
+fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+    .then((response) => response.json())
+    .then((data) => {
+        let sectioncateg = document.querySelector(".categories");
+        let divcateg = document.createElement("div");
+        divcateg.className = 'categdiv container'
+        sectioncateg.appendChild(divcateg);
+        let categ = document.querySelector(".categdiv");
+        for (var i = 1; i <= 14; i++) {
+            let divsepcateg = document.createElement("div");
+            divsepcateg.className = `categ${i} categ`
+            categ.appendChild(divsepcateg);
+            let inscateg = document.querySelector(`.categ${i}`)
+            let nomcateg = document.createElement("span");
+            let imgcateg = document.createElement("img");
+            let desccateg = document.createElement("span");
+            nomcateg.textContent = data.categories[i].strCategory;
+            imgcateg.src = data.categories[i].strCategoryThumb;
+            desccateg.textContent = data.categories[i].strCategoryDescription;
+            inscateg.appendChild(nomcateg);
+            inscateg.appendChild(imgcateg);
+            inscateg.appendChild(desccateg);
+        }
+    })
     .catch((err) => {
         console.error(err);
     });
