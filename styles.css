@@ -142,5 +142,29 @@
 .categories .categdiv{
 	display: grid;
 	grid-template-columns: auto auto auto;
-	gap: 10px;
+	gap: 30px;
+}
+
+.categories .categ{
+	display: grid;
+	grid-template-areas: 
+	"nomcateg imgcateg"
+	"desccateg desccateg";
+}
+
+.nomcateg{
+	grid-area: nomcateg;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.imgcateg{
+	max width: 8em;
+	grid-area: imgcateg;
+	object-fit: cover;
+}
+
+.desccateg{
+	grid-area: desccateg;
 }

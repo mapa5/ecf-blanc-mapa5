@@ -94,8 +94,10 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
             let imgcateg = document.createElement("img");
             let desccateg = document.createElement("span");
             nomcateg.textContent = data.categories[i].strCategory;
+            nomcateg.className = 'nomcateg'
             imgcateg.src = data.categories[i].strCategoryThumb;
             desccateg.textContent = data.categories[i].strCategoryDescription;
+            desccateg.className = 'desccateg'
             inscateg.appendChild(nomcateg);
             inscateg.appendChild(imgcateg);
             inscateg.appendChild(desccateg);
