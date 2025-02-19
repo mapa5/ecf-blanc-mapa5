@@ -8,7 +8,7 @@
     display: grid;
     grid-template-areas:
         ". tit . . ."
-        ". ori . vid img"
+        ". ori vid vid img"
         ". rec . ing1 ing2"
         ". rec . ing3 ing4"
         ". rec . ing5 ing6"
@@ -19,8 +19,8 @@
         ". rec . ing15 ing16"
         ". rec . ing17 ing18"
         ". rec . ing19 ing20";
-        gap: 10px;
-    grid-template-columns: minmax(30px, 1fr) ;
+    gap: 10px;
+    grid-template-columns: min(30px) auto min(30px) auto;
 }
 
 .plat h2 {
@@ -48,9 +48,17 @@
 .plat iframe {
     grid-area: vid;
 }
-.plat .ingr img{
-	max-width: 8em;
+
+.plat .ingr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+.plat .ingr img {
+    max-width: 6em;
+}
+
 .plat .ingr1 {
     grid-area: ing1;
 }
@@ -129,4 +137,10 @@
 
 .plat .ingr20 {
     grid-area: ing20;
+}
+
+.categories .categdiv{
+	display: grid;
+	grid-template-columns: auto auto auto;
+	gap: 10px;
 }
