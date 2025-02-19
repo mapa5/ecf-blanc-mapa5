@@ -244,7 +244,7 @@ if (f != null) {
                 console.log(mealselem);
                 let sectionplat = document.querySelector(".lettermeal");
                 let divplat = document.createElement("div");
-                divplat.className = `plat${j} container`
+                divplat.className = `plat${j} plat container`
                 sectionplat.appendChild(divplat);
                 let plat = document.querySelector(`.plat${j}`);
                 for (let elem in mealselem) {
