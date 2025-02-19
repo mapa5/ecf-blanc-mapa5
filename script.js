@@ -1,55 +1,25 @@
 fetch("https://www.themealdb.com/api/json/v1/1/random.php")
     .then((response) => response.json())
     .then((data) => {
-        console.log(data);
-        console.log(data.meals[0].idMeal);
-
-
-        // <div class="plat">
-        //    <h2></h2>
-        //    <figure class='pays'>
-        //        <img src="">
-        //        <figcaption></figcaption>
-        //    </figure>
-        //    <figure>
-        //        <img src="">
-        //        <figcaption></figcaption>
-        //    </figure>
-        //    <div class="ingr">
-        //        <img src="">
-        //        <span></span>
-        //        <span></span>
-        //    </div>
-        //    <span></span>
-        //    <video></video>
-        // </div>
-
         const sectionplat = document.querySelector(".random");
         let divplat = document.createElement("div");
-        divplat.className = 'plat'
+        divplat.className = 'plat container'
         sectionplat.appendChild(divplat);
-
         const plat = document.querySelector(".plat");
-
-
         for (const elem in data.meals[0]) {
-
-            console.log(`${elem}: ${data.meals[0][elem]}`);
-
-
-
             switch (elem) {
                 case "strMeal":
                     {
                         let nomplat = document.createElement("h2");
                         nomplat.textContent = data.meals[0].strMeal
+                        nomplat.className = 'titre'
                         plat.appendChild(nomplat);
                         continue
                     }
                 case "strArea":
                     {
                         let descpays = document.createElement("span");
-                        descpays.textContent = data.meals[0][`strMeasure${i}`];
+                        descpays.textContent = data.meals[0].strArea;
                         plat.appendChild(descpays);
                         continue
                     }
@@ -71,8 +41,10 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
                     }
                 case "strYoutube":
                     {
-                        let ytlink = document.createElement("video");
-                        ytlink.src = data.meals[0].strYoutube;
+                        let ytlink = document.createElement("iframe");
+                        let ytchiant1 = data.meals[0].strYoutube.slice(0, 24)
+                        let ytchiant2 = data.meals[0].strYoutube.slice(32)
+                        ytlink.src = ytchiant1 + 'embed/' + ytchiant2;
                         plat.appendChild(ytlink);
                         continue
                     }
@@ -82,7 +54,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
 
             if (data.meals[0][`strIngredient${i}`] != "") {
                 let divingr = document.createElement("div");
-                divingr.className = `ingr${i}`
+                divingr.className = `ingr${i} ingr`
                 plat.appendChild(divingr);
                 const ingr = document.querySelector(`.ingr${i}`);
                 let imgingredient = document.createElement("img");
