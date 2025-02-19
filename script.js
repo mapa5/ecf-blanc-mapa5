@@ -99,7 +99,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
             desccateg.textContent = data.categories[i].strCategoryDescription;
             desccateg.className = 'desccateg'
 
-            divsepcateg.addEventlistener("click", () => {
+            divsepcateg.addEventListener("click", function () {
                 location.href = `categorie.html?c=${data.categories[i].strCategory}`
             })
             inscateg.appendChild(nomcateg);
@@ -112,13 +112,41 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     });
 
 
-// fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${data.categories[i].strCategory}`)
-//     .then((response) => response.json())
-//     .then((data) => {
+let params = new URLSearchParams(document.location.search);
+let c = params.get("c");
 
+if (c != null) {
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${c}`)
+        .then((response) => response.json())
+        .then((data) => {
+        let sectioncateg = document.querySelector(".categorie");
+        let divcateg = document.createElement("div");
+        divcateg.className = 'categdiv container'
+        sectioncateg.appendChild(divcateg);
+        let categ = document.querySelector(".categdiv");
+        // for (let i = 1; i <= 14; i++) {
+        //     let divsepcateg = document.createElement("div");
+        //     divsepcateg.className = `categ${i} categ`
+        //     categ.appendChild(divsepcateg);
+        //     let inscateg = document.querySelector(`.categ${i}`)
+        //     let nomcateg = document.createElement("span");
+        //     let imgcateg = document.createElement("img");
+        //     let desccateg = document.createElement("span");
+        //     nomcateg.textContent = data.categories[i].strCategory;
+        //     nomcateg.className = 'nomcateg'
+        //     imgcateg.src = data.categories[i].strCategoryThumb;
+        //     desccateg.textContent = data.categories[i].strCategoryDescription;
+        //     desccateg.className = 'desccateg'
 
-
-//     })
-//     .catch((err) => {
-//         console.error(err);
-//     });
+        //     divsepcateg.addEventListener("click", function () {
+        //         location.href = `categorie.html?c=${data.categories[i].strCategory}`
+        //     })
+        //     inscateg.appendChild(nomcateg);
+        //     inscateg.appendChild(imgcateg);
+        //     inscateg.appendChild(desccateg);
+        // }
+    })
+        .catch((err) => {
+            console.error(err);
+        });
+}
