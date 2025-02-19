@@ -1,0 +1,17 @@
+.plat{
+	display: grid;
+	grid-template-areas: 
+	"tit . . . img"
+	"ori . . . vid"
+	"rec rec . ing1 ing2"
+	"rec rec . ing3 ing4"
+	"rec rec . ing5 ing6"
+	"rec rec . ing7 ing8"
+	"rec rec . ing9 ing10"
+	"rec rec . ing11 ing12"
+	"rec rec . ing13 ing14"
+	"rec rec . ing15 ing16"
+	"rec rec . ing17 ing18"
+	"rec rec . ing19 ing20";
+}
+
