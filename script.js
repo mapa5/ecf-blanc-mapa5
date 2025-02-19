@@ -12,7 +12,6 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
                     {
                         let nomplat = document.createElement("h2");
                         nomplat.textContent = data.meals[0].strMeal
-                        nomplat.className = 'titre'
                         plat.appendChild(nomplat);
                         continue
                     }
@@ -20,6 +19,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
                     {
                         let descpays = document.createElement("span");
                         descpays.textContent = data.meals[0].strArea;
+                        descpays.className = 'pays'
                         plat.appendChild(descpays);
                         continue
                     }
@@ -28,6 +28,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
 
                         let recette = document.createElement("span");
                         recette.textContent = data.meals[0].strInstructions;
+                        recette.className = 'recette'
                         plat.appendChild(recette);
                         continue
                     }

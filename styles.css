@@ -1,17 +1,132 @@
-.plat{
-	display: grid;
-	grid-template-areas: 
-	"tit . . . img"
-	"ori . . . vid"
-	"rec rec . ing1 ing2"
-	"rec rec . ing3 ing4"
-	"rec rec . ing5 ing6"
-	"rec rec . ing7 ing8"
-	"rec rec . ing9 ing10"
-	"rec rec . ing11 ing12"
-	"rec rec . ing13 ing14"
-	"rec rec . ing15 ing16"
-	"rec rec . ing17 ing18"
-	"rec rec . ing19 ing20";
+.container {
+    width: 1440px;
+    margin: 0 auto;
 }
 
+.plat {
+    max-width: 80em;
+    display: grid;
+    grid-template-areas:
+        ". tit . . ."
+        ". ori . vid img"
+        ". rec . ing1 ing2"
+        ". rec . ing3 ing4"
+        ". rec . ing5 ing6"
+        ". rec . ing7 ing8"
+        ". rec . ing9 ing10"
+        ". rec . ing11 ing12"
+        ". rec . ing13 ing14"
+        ". rec . ing15 ing16"
+        ". rec . ing17 ing18"
+        ". rec . ing19 ing20";
+        gap: 10px;
+    grid-template-columns: minmax(30px, 1fr) ;
+}
+
+.plat h2 {
+    grid-area: tit;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.plat .pays {
+    grid-area: ori;
+    display: flex;
+    justify-content: center;
+}
+
+.plat .recette {
+    grid-area: rec;
+}
+
+.plat img {
+    grid-area: img;
+    max-width: 20em
+}
+
+.plat iframe {
+    grid-area: vid;
+}
+.plat .ingr img{
+	max-width: 8em;
+}
+.plat .ingr1 {
+    grid-area: ing1;
+}
+
+.plat .ingr2 {
+    grid-area: ing2;
+}
+
+.plat .ingr3 {
+    grid-area: ing3;
+}
+
+.plat .ingr4 {
+    grid-area: ing4;
+}
+
+.plat .ingr5 {
+    grid-area: ing5;
+}
+
+.plat .ingr6 {
+    grid-area: ing6;
+}
+
+.plat .ingr7 {
+    grid-area: ing7;
+}
+
+.plat .ingr8 {
+    grid-area: ing8;
+}
+
+.plat .ingr9 {
+    grid-area: ing9;
+}
+
+.plat .ingr10 {
+    grid-area: ing10;
+}
+
+.plat .ingr11 {
+    grid-area: ing11;
+}
+
+.plat .ingr12 {
+    grid-area: ing12;
+}
+
+.plat .ingr13 {
+    grid-area: ing13;
+}
+
+.plat .ingr14 {
+    grid-area: ing14;
+}
+
+.plat .ingr15 {
+    grid-area: ing15;
+}
+
+.plat .ingr16 {
+    grid-area: ing16;
+}
+
+.plat .ingr17 {
+    grid-area: ing17;
+}
+
+.plat .ingr18 {
+    grid-area: ing18;
+}
+
+.plat .ingr19 {
+    grid-area: ing19;
+}
+
+.plat .ingr20 {
+    grid-area: ing20;
+}
