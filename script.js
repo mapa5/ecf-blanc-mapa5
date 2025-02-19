@@ -51,7 +51,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/random.php")
                     }
             }
         }
-        for (var i = 1; i <= 20; i++) {
+        for (let i = 1; i <= 20; i++) {
 
             if (data.meals[0][`strIngredient${i}`] != "") {
                 let divingr = document.createElement("div");
@@ -85,7 +85,7 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
         divcateg.className = 'categdiv container'
         sectioncateg.appendChild(divcateg);
         let categ = document.querySelector(".categdiv");
-        for (var i = 1; i <= 14; i++) {
+        for (let i = 1; i <= 14; i++) {
             let divsepcateg = document.createElement("div");
             divsepcateg.className = `categ${i} categ`
             categ.appendChild(divsepcateg);
@@ -98,6 +98,10 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
             imgcateg.src = data.categories[i].strCategoryThumb;
             desccateg.textContent = data.categories[i].strCategoryDescription;
             desccateg.className = 'desccateg'
+
+            divsepcateg.addEventlistener("click", () => {
+                location.href = `categorie.html?c=${data.categories[i].strCategory}`
+            })
             inscateg.appendChild(nomcateg);
             inscateg.appendChild(imgcateg);
             inscateg.appendChild(desccateg);
@@ -106,3 +110,15 @@ fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
     .catch((err) => {
         console.error(err);
     });
+
+
+// fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${data.categories[i].strCategory}`)
+//     .then((response) => response.json())
+//     .then((data) => {
+
+
+
+//     })
+//     .catch((err) => {
+//         console.error(err);
+//     });
