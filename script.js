@@ -231,3 +231,89 @@ if (i != null) {
             console.error(err);
         });
 }
+
+let params3 = new URLSearchParams(document.location.search);
+let f = params3.get("f");
+
+if (f != null) {
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${f}`)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            data.meals.forEach((mealselem, j) => {
+                console.log(mealselem);
+                let sectionplat = document.querySelector(".lettermeal");
+                let divplat = document.createElement("div");
+                divplat.className = `plat${j} container`
+                sectionplat.appendChild(divplat);
+                let plat = document.querySelector(`.plat${j}`);
+                for (let elem in mealselem) {
+                    switch (elem) {
+                        case "strMeal":
+                            {
+                                let nomplat = document.createElement("h2");
+                                nomplat.textContent = mealselem.strMeal
+                                plat.appendChild(nomplat);
+                                break
+                            }
+                        case "strArea":
+                            {
+                                let descpays = document.createElement("span");
+                                descpays.textContent = mealselem.strArea;
+                                descpays.className = 'pays'
+                                plat.appendChild(descpays);
+                                break
+                            }
+                        case "strInstructions":
+                            {
+
+                                let recette = document.createElement("span");
+                                recette.textContent = mealselem.strInstructions;
+                                recette.className = 'recette'
+                                plat.appendChild(recette);
+                                break
+                            }
+                        case "strMealThumb":
+                            {
+
+                                let thumbplat = document.createElement("img");
+                                thumbplat.src = mealselem.strMealThumb;
+                                plat.appendChild(thumbplat);
+                                break
+                            }
+                        case "strYoutube":
+                            {
+                                let ytlink = document.createElement("iframe");
+                                let ytchiant1 = mealselem.strYoutube.slice(0, 24)
+                                let ytchiant2 = mealselem.strYoutube.slice(32)
+                                ytlink.src = ytchiant1 + 'embed/' + ytchiant2;
+                                // plat.appendChild(ytlink);
+                                break
+                            }
+                    }
+                }
+                for (let i = 1; i <= 20; i++) {
+
+                    if (mealselem[`strIngredient${i}`]) {
+                        let divingr = document.createElement("div");
+                        divingr.className = `ingr${i} ingr`
+                        plat.appendChild(divingr);
+                        let ingr = document.querySelector(`.plat${j} .ingr${i}`);
+                        let imgingredient = document.createElement("img");
+                        let ingredient = document.createElement("span");
+                        let mesure = document.createElement("span");
+                        imgingredient.src = `https://www.themealdb.com/images/ingredients/${mealselem[`strIngredient${i}`]}-Small.png`;
+                        ingredient.textContent = mealselem[`strIngredient${i}`] + " ";
+                        mesure.textContent = mealselem[`strMeasure${i}`];;
+                        ingr.appendChild(imgingredient);
+                        ingr.appendChild(ingredient);
+                        ingr.appendChild(mesure);
+                    } else
+                        break
+                }
+            })
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+}
