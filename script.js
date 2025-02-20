@@ -287,7 +287,7 @@ if (f != null) {
                                 let ytchiant1 = mealselem.strYoutube.slice(0, 24)
                                 let ytchiant2 = mealselem.strYoutube.slice(32)
                                 ytlink.src = ytchiant1 + 'embed/' + ytchiant2;
-                                // plat.appendChild(ytlink);
+                                plat.appendChild(ytlink);
                                 break
                             }
                     }
