@@ -317,3 +317,8 @@ if (f != null) {
             console.error(err);
         });
 }
+
+let searchsubmit = document.querySelector(`.search`)
+searchsubmit.addEventListener("click", function(){
+    
+})
